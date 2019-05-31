@@ -1,33 +1,69 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: asus
-  Date: 2017/4/28
-  Time: 21:53
-  To change this template use File | Settings | File Templates.
---%>
+<%@ include file="/commons/common.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"	import="java.util.* " %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>用户登录</title>
-</head>
-<body>
-<c:if test="${error!=null }">
-    <div class="alert alert-error">
-        <a class="close" data-dismiss="alert">×</a>
-        密码错误
-    </div>
-</c:if>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/head.png">
+    <link href="${cp}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${cp}/css/font-awesome.css" rel="stylesheet">
+    <link href="${cp}/css/style.css" rel="stylesheet">
 
-<form action="/backend/login" method="post" align="center">
-    用户名：<input type="text"  name="account"/><br>
-    密码：   <input type="password"   name="password"/><br>
-    <input type="submit"  value="登录"/>
-</form>
-<br>
-<br>
+    <script src="${cp}/js/jquery-3.2.1.min.js"></script>
+    <script src="${cp}/js/bootstrap.min.js"></script></head>
+<body class="gray-bg">
+<!--导航栏部分-->
+<jsp:include page="include/header.jsp"/>
+<%--<form action="/backend/login" method="post" align="center">--%>
+    <%--用户名：<input type="text"  name="account"/><br>--%>
+    <%--密码：   <input type="password"   name="password"/><br>--%>
+    <%--<input type="submit"  value="登录"/>--%>
+<%--</form>--%>
+<div class="middle-box text-center loginscreen">
+    <div style="padding: 100px 0px;">
+        <div>
+            <h1 class="logo-name">GS</h1>
+        </div>
+        <h3>欢迎使用 Guns</h3>
+        <br/>
+        <c:if test="${loginError!=null }">
+                <h4 style="color: red;">密码错误</h4>
+        </c:if>
+
+        <form class="m-t" role="form" action="/backend/doLogin" method="post">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="用户名" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="密码" required="">
+            </div>
+            <%--<div class="form-group" style="float: left;">--%>
+                <%--<div class="col-sm-8" style="padding-left: 0px; padding-right: 0px;">--%>
+                    <%--<input class="form-control" type="text" name="kaptcha" placeholder="验证码" required="">--%>
+                <%--</div>--%>
+                <%--<div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">--%>
+                    <%--<img src="${ctxPath}/kaptcha" id="kaptcha" width="100%" height="100%"/>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <div class="form-group" style="float: left;">
+                <div class="checkbox" style="text-align: left">
+                    <label>
+                        <input type="checkbox" name="remember" style="margin-top: 2px;">记住我
+                    </label>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary block full-width m-b"  value="登 录"/>
+            </p>
+        </form>
+    </div>
+    <!--尾部-->
+    <jsp:include page="include/foot.jsp"/>
+
+</div>
 </body>
 </html>

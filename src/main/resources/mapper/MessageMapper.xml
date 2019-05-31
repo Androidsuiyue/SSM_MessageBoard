@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qzhenghao.dao.MessageDao">
+    <insert id="insertUser" parameterType="com.qzhenghao.entity.Message">
+        insert ignore  into USER (topic,user_id,content,state)
+        VALUES (#{topic},#{user_id},#{content},#{state})
+    </insert>
+    <select id="queryAllCountId" resultType="long">
+        SELECT count(id) FROM message
+    </select>
+    <delete id="deleteUser" parameterType="long">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
+
+    <update id="updateScore" >
+        UPDATE
+            USER
+        SET
+            score = score +#{scoreCount}
+        WHERE
+            id = #{id}
+    </update>
+    <update id="updatecontent">
+        UPDATE
+            USER
+        SET
+            content = #{scoreCount}
+        WHERE
+            id = #{id}
+    </update>
+    <select id="queryTopN" resultType="com.qzhenghao.entity.User">
+        SELECT
+            *
+        FROM
+            USER
+        ORDER BY
+            score
+        DESC
+          LIMIT 20
+    </select>
+
+    <select id="findUserByProvince" resultType="com.qzhenghao.entity.User">
+        SELECT
+        *
+        FROM
+          USER
+        WHERE 1=1
+        <if test="province != null and province !=''">
+            AND province LIKE concat(concat('%',#{province}),'%')
+        </if>
+    </select>
+    <select id="queryAllPageOrdeByState" resultType="com.qzhenghao.entity.Message">
+       select
+       *
+       from MESSAGE
+       limit
+       #{pageNo},#{pageSize}
+       order by
+       state
+    </select>
+    <select id="queryByid" resultType="com.qzhenghao.entity.Message">
+         SELECT
+        *
+        FROM
+        USER
+        WHERE
+        id=#{id}
+    </select>
+</mapper>

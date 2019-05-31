@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fuzhu.dao.GoodDetailsDao">
+<mapper namespace="com.qzhenghao.dao.GoodDetailsDao">
 
     <!-- goodAfterRate和industryCompare在表中对应的数据类型是nvarchar -->
-    <resultMap id="goodDetailsResultMap" type="com.fuzhu.entity.GoodDetails">
+    <resultMap id="goodDetailsResultMap" type="com.qzhenghao.entity.GoodDetails">
         <id column="Good_ID" property="goodId" jdbcType="NVARCHAR"/>
         <result column="Good_Name" property="goodName" jdbcType="NVARCHAR"/>
         <result column="Good_Brand" property="goodBrand" jdbcType="NVARCHAR"/>
@@ -31,7 +31,7 @@
         select * from Commodity_list where Good_ID =
         #{id}
     </select>
-    <select id="findGoods" resultType="com.fuzhu.entity.GoodDetails">
+    <select id="findGoods" resultType="com.qzhenghao.entity.GoodDetails">
         select
               Good_Name,
               Good_Price,

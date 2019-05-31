@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fuzhu.dao.GoodClassifyDao">
+<mapper namespace="com.qzhenghao.dao.GoodClassifyDao">
 
-    <resultMap id="goodClassifyResultMap" type="com.fuzhu.entity.GoodClassify">
+    <resultMap id="goodClassifyResultMap" type="com.qzhenghao.entity.GoodClassify">
         <id column="Classify_ID" property="classifyId" jdbcType="INTEGER" />
         <result column="Good_kinds_Name" property="goodkindsName"
                 jdbcType="NVARCHAR" />
@@ -11,7 +11,7 @@
         <result column="Description" property="description" jdbcType="NVARCHAR" />
     </resultMap>
 
-    <resultMap id="goodDetailsResultMap" type="com.fuzhu.entity.GoodDetails">
+    <resultMap id="goodDetailsResultMap" type="com.qzhenghao.entity.GoodDetails">
         <id column="Good_ID" property="goodId" jdbcType="NVARCHAR" />
         <result column="Classify_ID" property="classifyId" jdbcType="INTEGER" />
         <result column="Good_Name" property="goodName" jdbcType="NVARCHAR" />
@@ -36,7 +36,7 @@
 
     <!-- 根据商品种类ID查询所属类别的商品信息 ,目前用于建立索引-->
     <select id="findGoodDetailsByClassifyID"
-            parameterType="integer" resultType="com.fuzhu.entity.GoodDetails">
+            parameterType="integer" resultType="com.qzhenghao.entity.GoodDetails">
         select
         d.Good_ID ,
         d.Classify_ID,

@@ -1,0 +1,210 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+button, input {
+	outline:none;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:hover {
+	background: #dc6c3b;
+}
+
+button:active {
+	border: none;
+}
+
+.container {
+	width: 960px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.head {
+	width: 960px;
+	height: 185px;
+	background-image: url("../images/head.png");
+}
+
+.foot {
+	width: 960px;
+	height: 27px;
+	background-image: url("../images/foot.png");
+}
+
+.form {
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.tip {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.user {
+	color: #57181a
+}
+
+.btn-login {
+	width: 60px;
+	height: 20px;
+	background: #dc6c3b;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.btn-group {
+	padding-left: 20px;
+	padding-top: 145px;
+}
+
+.btn-head {
+	width: 85px;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	background: #333;
+	border: none;
+}
+
+.content {
+	width: 990px;
+	height: auto;
+	display: flex;
+}
+
+.left {
+	padding: 15px;
+	width: 590px;
+	float: left;
+}
+
+.right {
+	width: 370px;
+	float: right;
+	background: #e0e0e0;
+}
+
+.left-title {
+	width: auto;
+	height: 36px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 14px;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+	margin-bottom: -4px;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #dc6c3b;
+	line-height: 36px;
+}
+
+.list {
+	list-style-position:inside;
+}
+
+.list-li {
+	padding: 0 10px;
+	width: auto;
+	height: 30px;
+	color: #dc6c3b;
+}
+
+.list-li:hover{
+	background: #f0d7d2;
+	cursor: pointer;
+}
+
+.li-text {
+	font-size: 14px;
+	line-height: 30px;
+	color: #333;
+}
+
+.li-date {
+	font-size: 12px;
+	line-height: 30px;
+	color: #333;
+	float: right;
+}
+
+.bg-hl {
+	background: #efefef;
+}
+
+.tag-warm {
+	padding: 3px 6px;
+	font-size: 12px;
+	line-height: 28px;
+	background: #e64340;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.tag-success {
+	padding: 3px 6px;
+	font-size: 12px;
+	line-height: 28px;
+	background: #09bb07;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.btn-group-foot {
+	float: right;
+	margin-top: 22px;
+}
+
+.btn-foot {
+	width: 52px;
+	height: 20px;
+	line-height: 20px;
+	color: #fff;
+	background: #333;
+	border: none;
+}
+
+.right-content {
+	width: 330px;
+	height: 90%;
+	margin: 10px auto;
+	padding: 15px;
+	border: 1px solid #fff;
+	border-radius: 3px;
+}
+
+.right-title {
+	margin-top: -10px;
+}
+
+.tb tr {
+	height: 30px;
+}
+
+.tb-title {
+	width: 50px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.tb-content {
+	font-size: 14px;
+}
+
+.td-color {
+	color: #57181a;
+}

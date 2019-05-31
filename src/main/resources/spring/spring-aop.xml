@@ -5,5 +5,5 @@
 
     <!-- 切面设置 -->
     <aop:aspectj-autoproxy/>
-    <bean class="com.fuzhu.aop.AESAspect" />
+    <bean class="com.qzhenghao.aop.AESAspect" />
 </beans>

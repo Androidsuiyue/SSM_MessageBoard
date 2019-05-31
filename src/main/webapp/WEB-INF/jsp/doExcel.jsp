@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*"%>
-<%@ page import="com.fuzhu.entity.GoodDetails" %>
+<%@ page import="com.qzhenghao.entity.GoodDetails" %>
 <%
     String titleName = "商品列表";
 
