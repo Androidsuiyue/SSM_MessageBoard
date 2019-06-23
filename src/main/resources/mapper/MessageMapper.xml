@@ -3,25 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qzhenghao.dao.MessageDao">
-    <insert id="insertUser" parameterType="com.qzhenghao.entity.Message">
-        insert ignore  into USER (topic,user_id,content,state)
-        VALUES (#{topic},#{user_id},#{content},#{state})
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qzhenghao.entity.Message">
+        <id column="id" property="id" />
+        <result column="topic" property="topic" />
+        <result column="user_id" property="userId" />
+        <result column="content" property="content" />
+        <result column="reply_content" property="replyContent" />
+        <result column="state" property="state" />
+        <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+        <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <insert id="insertMessage" parameterType="com.qzhenghao.entity.Message">
+        insert ignore  into MESSAGE (topic,user_id,content,state)
+        VALUES (#{topic},#{userId},#{content},#{state})
     </insert>
     <select id="queryAllCountId" resultType="long">
         SELECT count(id) FROM message
     </select>
-    <delete id="deleteUser" parameterType="long">
-        DELETE FROM user WHERE id=#{id}
-    </delete>
-
-    <update id="updateScore" >
-        UPDATE
-            USER
-        SET
-            score = score +#{scoreCount}
-        WHERE
-            id = #{id}
-    </update>
     <update id="updatecontent">
         UPDATE
             USER
@@ -29,6 +31,16 @@
             content = #{scoreCount}
         WHERE
             id = #{id}
+    </update>
+
+    <update id="updateMessage" >
+        UPDATE
+        MESSAGE
+        SET
+        reply_content = #{replyContent},
+        state = #{state}
+        WHERE
+        id = #{id}
     </update>
     <select id="queryTopN" resultType="com.qzhenghao.entity.User">
         SELECT
@@ -55,17 +67,16 @@
        select
        *
        from MESSAGE
-       limit
-       #{pageNo},#{pageSize}
        order by
        state
+       limit
+       #{pageNo},#{pageSize}
     </select>
-    <select id="queryByid" resultType="com.qzhenghao.entity.Message">
-         SELECT
-        *
-        FROM
-        USER
+    <select id="queryById"  resultType="com.qzhenghao.entity.Message">
+        select
+       *
+       from MESSAGE
         WHERE
-        id=#{id}
+        id = #{id}
     </select>
 </mapper>

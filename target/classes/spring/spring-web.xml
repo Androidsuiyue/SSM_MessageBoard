@@ -57,6 +57,6 @@
         <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
-    <bean id="luceneDao" class="com.qzhenghao.dao.LuceneDao" >
-    </bean>
+    <!--<bean id="luceneDao" class="com.qzhenghao.dao.LuceneDao" >-->
+    <!--</bean>-->
 </beans>

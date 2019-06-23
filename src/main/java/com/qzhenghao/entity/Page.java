@@ -1,7 +1,13 @@
 package com.qzhenghao.entity;
 
+import lombok.Data;
+
 import java.util.List;
 
+/**
+ * @author suiyue
+ */
+@Data
 public class Page<T> {
 
 	//页
@@ -11,7 +17,7 @@ public class Page<T> {
 	private List<T> list;
 	
 	//每页数
-	private int pageSize = 3;
+	private int pageSize = 15;
 	
 	//书本总数
 	private long totalItemNumber;
@@ -24,8 +30,10 @@ public class Page<T> {
 	
 	//得到当前页数
 	public int getPageNo() {
-		if(pageNo < 0)
+		if (pageNo < 0) {
+
 			pageNo = 1;
+		}
 		
 		if(pageNo > getTotalPageNumber()){
 			pageNo = getTotalPageNumber();

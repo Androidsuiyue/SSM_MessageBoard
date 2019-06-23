@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserDao {
     User login(String account);
     //根据id查人
-    User queryById(long id);
+    User queryById(int id);
     //查询所有用户
     List<User> queryAll();
     //删除用户

@@ -1,20 +1,28 @@
 package com.qzhenghao.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
-
+@Data
 public class Message {
 
-	private int id;
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 	//主题
 	private String topic;
 	//作者
-	private Integer user_id;
+	private int userId;
 	//内容
 	private String content;
+	private String replyContent;
+
 	//状态
-	private String state;
-	private String create_time;
-	private Date update_time;
+	private int state;
+	private String createTime;
+	private String updateTime;
+	private String userName;
+
 
 }

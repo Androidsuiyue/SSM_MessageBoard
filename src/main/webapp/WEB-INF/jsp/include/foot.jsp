@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>购物+</title>
+    <title>留言+</title>
     <link href="${cp}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${cp}/css/style.css" rel="stylesheet">
 
@@ -26,7 +26,7 @@
         <br/>
         </center>
         <br/>
-        <center><p>@suiyue</p></center>
+        <center><p>@18401210137</p></center>
     </div>
     <!-- 结束啦 -->
 

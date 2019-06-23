@@ -12,24 +12,20 @@
     <link rel="shortcut icon" href="../../images/head.png">
     <link href="${cp}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${cp}/css/font-awesome.css" rel="stylesheet">
-    <link href="${cp}/css/style.css" rel="stylesheet">
+    <link href="${cp}/css/style_1.css" rel="stylesheet">
+
 
     <script src="${cp}/js/jquery-3.2.1.min.js"></script>
     <script src="${cp}/js/bootstrap.min.js"></script></head>
 <body class="gray-bg">
 <!--导航栏部分-->
 <jsp:include page="include/header.jsp"/>
-<%--<form action="/backend/login" method="post" align="center">--%>
-    <%--用户名：<input type="text"  name="account"/><br>--%>
-    <%--密码：   <input type="password"   name="password"/><br>--%>
-    <%--<input type="submit"  value="登录"/>--%>
-<%--</form>--%>
 <div class="middle-box text-center loginscreen">
-    <div style="padding: 100px 0px;">
+    <div style="padding: 50px 0px;">
         <div>
-            <h1 class="logo-name">GS</h1>
+            <h1 class="logo-name">Qzh</h1>
         </div>
-        <h3>欢迎使用 Guns</h3>
+        <h3>欢迎使用</h3>
         <br/>
         <c:if test="${loginError!=null }">
                 <h4 style="color: red;">密码错误</h4>
@@ -42,14 +38,6 @@
             <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="密码" required="">
             </div>
-            <%--<div class="form-group" style="float: left;">--%>
-                <%--<div class="col-sm-8" style="padding-left: 0px; padding-right: 0px;">--%>
-                    <%--<input class="form-control" type="text" name="kaptcha" placeholder="验证码" required="">--%>
-                <%--</div>--%>
-                <%--<div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">--%>
-                    <%--<img src="${ctxPath}/kaptcha" id="kaptcha" width="100%" height="100%"/>--%>
-                <%--</div>--%>
-            <%--</div>--%>
             <div class="form-group" style="float: left;">
                 <div class="checkbox" style="text-align: left">
                     <label>

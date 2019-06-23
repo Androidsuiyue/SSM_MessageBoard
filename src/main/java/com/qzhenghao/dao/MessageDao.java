@@ -5,6 +5,7 @@ import com.qzhenghao.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ${符柱成} on 2017/3/31.
@@ -17,21 +18,28 @@ public interface MessageDao {
      * @param message
      * @return
      */
-    int insertUser(Message message);
+    int insertMessage(Message message);
 
     /**
      * 更新内容
      * @param id
-     * @param scoreCount
+     * @param content
      */
-    void updatecontent(@Param("id") long id, @Param("content") String scoreCount);
+    void updatecontent(@Param("id") long id, @Param("content") String content);
+
+    /**
+     * 管理员更新内容
+     * @param id
+     * @param replyContent
+     */
+    void updateMessage(@Param("id") int id, @Param("replyContent") String replyContent,@Param("state") int state);
 
     /**
      * 通过id查询
      *
      * @return
      */
-    Message queryByid(@Param("id") int id);
+    Message queryById(@Param("id") int id);
 
     /**
      * 计算所有id数
@@ -46,12 +54,7 @@ public interface MessageDao {
     //根据省份查用户
     List<User> findUserByProvince(@Param("province") String province);
 
-    /**
-     * 通过usernumber查询user
-     * @param usernumber
-     * @return
-     */
-    User queryByUsernumber(@Param("usernumber") String usernumber);
+
 
 
 

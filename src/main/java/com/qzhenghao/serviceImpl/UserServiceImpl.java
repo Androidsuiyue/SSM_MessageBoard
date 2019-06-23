@@ -12,7 +12,7 @@ import java.util.List;
  * @author suiyue
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl  implements UserService {
     @Autowired
     private UserDao userDao;
 
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
-    public User queryById(long id) {
+    public User queryById(int id) {
         User user = userDao.queryById(id);
         return user;
     }

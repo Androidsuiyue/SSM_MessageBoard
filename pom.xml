@@ -53,6 +53,7 @@
     </dependency>
 
     <!-- DAO: MyBatis -->
+    
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
@@ -208,33 +209,33 @@
 
 
 
-    <!-- lucene核心包 -->
-     <!--lucene -->
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-core</artifactId>
-      <version>4.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-queryparser</artifactId>
-      <version>4.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-analyzers-common</artifactId>
-      <version>4.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-highlighter</artifactId>
-      <version>4.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-memory</artifactId>
-      <version>4.4.0</version>
-    </dependency>
+    <!--&lt;!&ndash; lucene核心包 &ndash;&gt;-->
+     <!--&lt;!&ndash;lucene &ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.lucene</groupId>-->
+      <!--<artifactId>lucene-core</artifactId>-->
+      <!--<version>4.4.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.lucene</groupId>-->
+      <!--<artifactId>lucene-queryparser</artifactId>-->
+      <!--<version>4.4.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.lucene</groupId>-->
+      <!--<artifactId>lucene-analyzers-common</artifactId>-->
+      <!--<version>4.4.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.lucene</groupId>-->
+      <!--<artifactId>lucene-highlighter</artifactId>-->
+      <!--<version>4.4.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.lucene</groupId>-->
+      <!--<artifactId>lucene-memory</artifactId>-->
+      <!--<version>4.4.0</version>-->
+    <!--</dependency>-->
     <!-- IKAnalyzer -->
     <!--<dependency>-->
       <!--<groupId>com.janeluo</groupId>-->
@@ -255,19 +256,19 @@
       <version>3.15</version>
     </dependency>
 
-    <!-- Java 邮件-->
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-      <version>1.4.5</version>
-    </dependency>
+    <!--&lt;!&ndash; Java 邮件&ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>javax.mail</groupId>-->
+      <!--<artifactId>mail</artifactId>-->
+      <!--<version>1.4.5</version>-->
+    <!--</dependency>-->
 
-    <!-- jxl excel导入导出的另一个库 -->
-    <dependency>
-      <groupId>net.sourceforge.jexcelapi</groupId>
-      <artifactId>jxl</artifactId>
-      <version>2.6.12</version>
-    </dependency>
+    <!--&lt;!&ndash; jxl excel导入导出的另一个库 &ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>net.sourceforge.jexcelapi</groupId>-->
+      <!--<artifactId>jxl</artifactId>-->
+      <!--<version>2.6.12</version>-->
+    <!--</dependency>-->
 
   </dependencies>
   <build>

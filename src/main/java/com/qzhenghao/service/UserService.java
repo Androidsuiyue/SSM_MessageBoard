@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author suiyue
  */
-public interface UserService {
+public interface UserService{
     /**
      * 登录接口
      * @param usernumber
@@ -15,7 +15,7 @@ public interface UserService {
      */
     User login(String usernumber);
     //根据id查人
-    User queryById(long id);
+    User queryById(int id);
 
     String register(String usernumber, String email, String name, String password, String tel);
     //查询所有用户

@@ -6,9 +6,8 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 
-
 /**
- * Created by 符柱成 on 2017/8/3.
+ * @author suiyue
  */
 @Component
 @Aspect

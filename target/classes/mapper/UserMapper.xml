@@ -3,6 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qzhenghao.dao.UserDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qzhenghao.entity.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="usernumber" property="usernumber" />
+        <result column="password" property="password" />
+        <result column="type" property="type" />
+        <result column="email" property="email" />
+        <result column="tel" property="tel" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
     <insert id="insertUser" parameterType="com.qzhenghao.entity.User">
         insert ignore  into USER (name,usernumber,password,type,email,tel)
         VALUES (#{name},#{usernumber},#{password},#{type},#{email},#{tel})
@@ -13,10 +27,10 @@
         FROM
             user
     </select>
-    <delete id="deleteUser" parameterType="long">
+    <delete id="deleteUser" parameterType="int">
         DELETE FROM user WHERE id=#{id}
     </delete>
-    <select id="queryById" parameterType="long" resultType="com.qzhenghao.entity.User">
+    <select id="queryById" parameterType="int" resultType="com.qzhenghao.entity.User">
         SELECT
               *
         FROM

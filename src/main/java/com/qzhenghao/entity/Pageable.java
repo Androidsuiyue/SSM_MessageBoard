@@ -11,7 +11,7 @@ public class Pageable {
 	//0开始
 	private int pageNo;
 	//每页数
-	private int pageSize = 3;
+	private int pageSize = 15;
 	//
 	public Pageable(int pageNo) {
 		this.pageNo = pageNo;

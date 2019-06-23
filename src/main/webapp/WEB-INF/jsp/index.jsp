@@ -22,36 +22,15 @@
     <!--导航栏部分-->
 
     <div class="head">
-                <%--<div id="tip" style="display: none;" class="form tip">欢迎进入留言板，<span class="user"><%=usernumber%></span></div>--%>
                 <div class="btn-group">
                     <button class="btn-head" id="btn-look">查看留言</button>
+                    <c:if test="${not empty currentUser}">
                     <button class="btn-head" id="btn-send">发布留言</button>
+                    <c:if test="${currentUser.type == 1}">
                     <button class="btn-head" id="btn-make">修改留言</button>
+                    </c:if>
+                    </c:if>
                 </div>
-                               
-                <%--<div id="tip" style="display: none;" class="form tip">欢迎进入留言板，<span class="user">--%>
-                    <%--<a href="login.jsp">登 录</a></span><span>|</span></div>--%>
-               <%----%>
-
-
-
-            <%--<div id="form" action="#" class="form" method="post">--%>
-            <%--用户名:--%>
-            <%--<input type="text" name="username" size="10" />--%>
-            <%--密码:--%>
-            <%--<input type="password" name="password" size="10" />--%>
-            <%--<input type="submit" name="btn" value="登 录" class="btn-login" />--%>
-        <%--</div>--%>
-       <%----%>
-            <%--<h4 style="color: red;">密码错误</h4>--%>
-
-        <%--<div id="tip" style="display: none;" class="form tip">欢迎进入留言板，<span class="user">${usernumber}</span></div>--%>
-        <%--<div class="btn-group">--%>
-            <%--<button class="btn-head" id="btn-look">查看留言</button>--%>
-            <%--<button class="btn-head" id="btn-send">发布留言</button>--%>
-            <%--<button class="btn-head" id="btn-make">修改留言</button>--%>
-        <%--</div>--%>
-
     </div>
     <div class="content">
         <div class="left">
@@ -59,87 +38,43 @@
                 <img src="../../images/msg_content.png" class="icon" />
                 <span class="title">留言内容</span>
             </div>
-            <ul class="list">
-                <li class="list-li bg-hl">
-                    <span class="li-text">小区噪音严重影响市民健康？</span>
-                    <span class="tag-warm">未解决</span>
-                    <span class="li-date">2019-03-18</span>
+            <ul class="list" >
+                <li class="list-li bg-hl" name="li1" id="li1">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">出国需要办理什么手续？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li" name="li2" id="li2">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">谁能介绍下宁波的考研暑假强化班？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li3" id="li3">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">考试分数线总分考但是公共课成绩低能上线吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li"  name="li4" id="li4">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">出国需要办理什么手续吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li5" id="li5">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">有没有人说过天才需要百分之九十九的运气？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li" name="li6" id="li6">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">谁能介绍下宁波的考研暑假强化班？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li7" id="li7">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">考试分数线总分考但是公共课成绩低能上线吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li" name="li8" id="li8">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">出国需要办理什么手续吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li9" id="li9">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">有没有人说过天才需要百分之九十九的运气？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li" name="li10" id="li10">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">谁能介绍下宁波的考研暑假强化班？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li11" id="li11">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">考试分数线总分考但是公共课成绩低能上线吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li" name="li12" id="li12">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">出国需要办理什么手续吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li13" id="li13">
                 </li>
-                <li class="list-li">
-                    <span class="li-text">有没有人说过天才需要百分之九十九的运气？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li" name="li14" id="li14">
                 </li>
-                <li class="list-li bg-hl">
-                    <span class="li-text">出国需要办理什么手续吗？</span>
-                    <span class="tag-success">已解决</span>
-                    <span class="li-date">2019-03-28</span>
+                <li class="list-li bg-hl" name="li15" id="li15">
                 </li>
             </ul>
             <div class="btn-group-foot">
-                <button class="btn-foot">上一页</button>
-                <button class="btn-foot">下一页</button>
-                <button class="btn-foot">首 页</button>
+
+                <a class="btn-foot" onclick="perpage()" >上一页</a>
+                <a class="btn-foot" onclick="nextpage()">下一页</a>
+                <a class="btn-foot" onclick="indexpage()">首 页</a>
             </div>
         </div>
         <div class="right">
@@ -151,44 +86,235 @@
                 <table class="tb" id="tb">
                     <tr>
                         <td valign="top" class="tb-title">主题：</td>
-                        <td valign="top" class="tb-content">小区噪音严重影响市民健康</td>
+                        <td valign="top" class="tb-content" name="tb1" id="tb1"></td>
                     </tr>
                     <tr>
                         <td valign="top" class="tb-title">作者：</td>
-                        <td valign="top" class="tb-content">小小</td>
+                        <td valign="top" class="tb-content" name="tb2" id="tb2"></td>
                     </tr>
                     <tr>
                         <td valign="top" class="tb-title">日期：</td>
-                        <td valign="top" class="tb-content">2019-03-18</td>
+                        <td valign="top" class="tb-content" name="tb3" id="tb3"></td>
                     </tr>
                     <tr style="height: 50px;">
                         <td valign="top" class="tb-title">内容：</td>
-                        <td valign="top" class="tb-content">小区噪音验证影响市民健康，很是让人烦躁，你们怎么看？</td>
+                        <td valign="top" class="tb-content" name="tb4" id="tb4"></td>
                     </tr>
-                    <tr id="tr-content" style="height: 50px;display: none;">
-                        <td valign="top" class="tb-title">内容：</td>
-                        <td valign="top" class="tb-content">
-                            <textarea rows="5" cols="35">小区噪音验证影响市民健康，很是让人烦躁，你们怎么看？</textarea>
-                        </td>
-                    </tr>
-                    <tr id="tb-content">
+
+
+                    <tr style="height: 50px;">
                         <td valign="top" class="tb-title">回复：</td>
-                        <td valign="top" class="tb-content td-color">已经将您的咨询转到市长信箱处理，请您留意场相关信箱。</td>
+                        <td valign="top" class="tb-content" name="tb5" id="tb5"></td>
                     </tr>
+
                 </table>
+                <form class="m-t" role="form" action="/updatemessage" method="post">
+                <div class="tb" style="display: none;" id="reply-content">
+
+                    <div valign="top" class="tb-title">回复：</div>
+
+                    <textarea type="text" rows="5" cols="30"  name="reply" id="tb6"></textarea>
+                    <input type="text" style="display:none" name="inputid" value="1" id="inputid"/>
+
+
+                    <input type="submit" name="btn1" value="更 改" class="btn-login" />
+                </div>
+                </form>
+
+
+                <form class="m-t" role="form" action="/addmessage" method="post">
                 <div class="tb" style="display: none;" id="look-content">
-                    <p class="tb-title">主题：</p>
-                    <input type="text" name="text" size="40">
-                    <p class="tb-title">内容：</p>
-                    <textarea rows="6" cols="42"></textarea>
+                        <td valign="top" class="tb-title">作者： </td>
+                        <input type="text" name="user"  readonly="readonly" value="${currentUser.name}" size="40">
+                    </tr>
+
+                    <tr class="tb-title">主题：</tr>
+                    <input type="text" name="topic" size="40">
+                    <tr class="tb-title">内容：</tr>
+                    <textarea rows="6" cols="42" type="text" name="content"></textarea>
                     <input type="submit" name="btn" value="发 表" class="btn-login" />
                 </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="foot"></div>
+<%
+    int pageno=1;
+    int messageid=0;
+%>
     <!--尾部-->
     <jsp:include page="include/foot.jsp"/>
+
+    <script type="text/javascript">
+
+        var loading = layer.load(0);
+
+        listProducts(<%=pageno%>);
+        //下一页
+        function nextpage(){
+            <%pageno =pageno+1;%>
+            listProducts(<%=pageno%>);
+        }
+        //上一页
+        function perpage(){
+            <%
+                pageno =pageno-1;
+                if(pageno<=0){
+                    pageno=1;
+                }
+            %>
+            listProducts(<%=pageno%>);
+        }
+        //首页
+        function indexpage(){
+            <%
+                    pageno=1;
+            %>
+
+            listProducts(<%=pageno%>);
+        }
+        /**
+         * 将请求到的数据显示到页面
+         * @param pageno
+         */
+        function listProducts(pageno) {
+            var allProduct = getAllProducts(pageno);
+            for(var i=0;i<15;i++){
+                var html = "";
+                var state = "";
+                var id = "li"+(i+1);
+                var productArea = document.getElementById(id);
+                if (allProduct[i]!=null) {
+                    if (allProduct[i].state == 0) {
+                        state = '<span class="tag-warm">' + '未解决' + '</span>';
+                    } else {
+                        state = '<span class="tag-success">' + '已解决' + '</span>';
+                    }
+                    html += '<span class="li-text">' + allProduct[i].topic + '</span>' + state + '<span class="li-date">' + allProduct[i].createTime + '</span>';
+                    var allid= allProduct[i].id;
+                    //闭包实现li标签的点击事件
+                    (function (allid) {
+                        productArea.addEventListener('click',function (){
+                            var inputid = "inputid";
+                            var inid = document.getElementById(inputid);
+                            inid.value=allid;
+                            console.log(allid);
+                            messageinfo(allid);
+                        });
+                    }(allid))
+                }
+                productArea.innerHTML="";
+                productArea.innerHTML = html;
+            }
+            layer.close(loading);
+        }
+        /**
+         * 通过Ajax实现后台数据的请求
+         * @param paegno
+         * @returns jian
+         */
+        function getAllProducts( paegno) {
+            var allProducts = null;
+            var nothing = {};
+            $.ajax({
+                async : false, //设置同步
+                type : 'Get',
+                url : '/message/list?pageNo='+paegno,
+                data : nothing,
+                dataType : 'json',
+                success : function(result) {
+                    if (result!=null) {
+                        allProducts = result.allProducts;
+                    }
+                    else{
+                        layer.alert('查询错误');
+                    }
+                },
+                error : function(resoult) {
+                    layer.alert('查询错误');
+                }
+            });
+            //这里的eval方法不同于prase方法，外面加括号
+            allProducts = eval("("+allProducts+")");
+            return allProducts;
+        }
+
+        function messageDetail(id) {
+            var productResult = "";
+            var product = {};
+            product.id = id;
+
+            $.ajax({
+                async : false, //设置同步
+                type : 'Get',
+                url : '/getmessage?id='+id,
+                data : product,
+                dataType : 'json',
+                success : function(result) {
+                    if (result!=null) {
+                        productResult = result.result;
+                    }
+                    else{
+                        layer.alert('查询错误');
+                    }
+                },
+                error : function(resoult) {
+                    layer.alert('查询错误');
+                }
+            });
+            //划重点划重点，这里的eval方法不同于prase方法，外面加括号
+            productResult = JSON.parse(productResult);
+            return productResult;
+        }
+
+
+        function messageinfo(id) {
+
+            var allProduct = messageDetail(id);
+            var state="";
+            if (allProduct!=null) {
+                for(var i=1; i<=6; i++){
+                    var id = "tb"+i;
+                    var productArea = document.getElementById(id);
+                    if (i==1) {
+                        productArea.innerHTML =allProduct.topic;
+                    }
+                    else if(i==2){
+                        productArea.innerHTML=allProduct.userName;
+                    }
+
+                    else if(i==3){
+                        productArea.innerHTML=allProduct.createTime;
+                    }
+
+                    else if(i==4){
+                            productArea.innerHTML=allProduct.content;
+                    }
+                    else if(i==5){
+                        if (allProduct.state==0) {
+                                state = '<span class="tag-warm">' + '未解决' + '</span>';
+                                productArea.innerHTML =state;
+                        }else {
+                            productArea.innerHTML=allProduct.replyContent;}
+                    }
+                    else if(i==6){
+                        if (allProduct.state==0) {
+                            productArea.innerHTML ="";
+                        }else {
+                            productArea.innerHTML = allProduct.replyContent;
+                        }
+                    }
+                }
+            }
+            layer.close(loading);
+        }
+
+
+
+
+    </script>
+
 
 </div>
 </body>

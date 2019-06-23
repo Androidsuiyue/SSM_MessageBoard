@@ -1,5 +1,5 @@
 <%
 
-    response.sendRedirect(request.getContextPath() + "/backend/registerPage");
+    response.sendRedirect(request.getContextPath() + "/backend/mian");
 
 %>

@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="../../images/head.png">
     <link href="${cp}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${cp}/css/font-awesome.css" rel="stylesheet">
-    <link href="${cp}/css/style.css" rel="stylesheet">
+    <link href="${cp}/css/style_1.css" rel="stylesheet">
 
     <script src="${cp}/js/jquery-3.2.1.min.js"></script>
     <script src="${cp}/js/bootstrap.min.js"></script></head>
@@ -25,11 +25,11 @@
     <%--<input type="submit"  value="登录"/>--%>
 <%--</form>--%>
 <div class="middle-box text-center loginscreen">
-    <div style="padding: 100px 0px;">
+    <div style="padding: 10px 0px;">
         <div>
-            <h1 class="logo-name">GS</h1>
+            <h1 class="logo-name">Qzh</h1>
         </div>
-        <h3>欢迎使用 Guns</h3>
+        <h3>欢迎使用</h3>
         <br/>
         <c:if test="${registerError!=null }">
                 <h4 style="color: red;">${registerError}</h4>

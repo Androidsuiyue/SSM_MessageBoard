@@ -2,13 +2,10 @@ package com.qzhenghao.controller;
 
 import com.qzhenghao.entity.User;
 import com.qzhenghao.service.UserService;
-import com.qzhenghao.utils.CookieUtil;
-import com.qzhenghao.utils.JavaWebToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletException;
@@ -16,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,22 +41,20 @@ public class MainController {
 
     @RequestMapping(value = "/doLogin", method = {RequestMethod.POST})
     public String login(HttpServletRequest request, HttpServletResponse response, RedirectAttributes model, HttpSession httpSession, String username, String password) throws IOException, ServletException {
+        //判断用户名密码是否正确
         User user = userService.login(username);
         if (null != user) {
             String password1 = user.getPassword();
             if (password.equals(password1)) {
+                //将当前用户放入session中
                 httpSession.setAttribute("currentUser", user);
-                Map<String, Object> loginInfo = new HashMap<>(16);
-                loginInfo.put("Token", user.getUsernumber());
-                loginInfo.put("timestamp", new Date());
-                String sessionId = JavaWebToken.createJavaWebToken(loginInfo);
-                CookieUtil.addCookie(response, "isLogin", sessionId);
+                //跳转到主页
                 return "redirect:mian";
             }
         }
+        //提示错误
         model.addFlashAttribute("loginError", "密码错误");
         return "redirect:loginPage";
-
     }
 
 
@@ -80,9 +74,6 @@ public class MainController {
     public String accusationPage(HttpServletRequest request) {
         return "index";
     }
-    @RequestMapping(value = "/logOut", method = {RequestMethod.GET})
-    public String loginOut(HttpServletRequest request, HttpServletResponse response) {
-        CookieUtil.deleteCookie(response,"isLogin");
-        return "redirect:loginPage";
-    }
+
+
 }
