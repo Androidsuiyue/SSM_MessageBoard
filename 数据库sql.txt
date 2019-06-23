@@ -1,0 +1,224 @@
+/*
+SQLyog Professional v12.5.1 (64 bit)
+MySQL - 5.5.61 : Database - db_messageboard
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_messageboard` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+
+
+USE `db_messageboard`;
+
+DROP TABLE IF EXISTS `db_messageboard`;
+
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增标识',
+  `name` VARCHAR(32) NOT NULL COMMENT '姓名',
+  `usernumber` VARCHAR(32) NOT NULL COMMENT '学工号',
+  `password` VARCHAR(32) NOT NULL COMMENT '密码',
+  `type` INT(11) NOT NULL DEFAULT '3' COMMENT '类型：\r\n1-超管\r\n2-教师\r\n3-学生',
+  `email` VARCHAR(32) DEFAULT NULL COMMENT '邮箱',
+  `tel` VARCHAR(16) DEFAULT NULL COMMENT '电话',
+  `create_time` TIMESTAMP  NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增标识',
+  `topic` VARCHAR(32) NOT NULL COMMENT '主题',
+  `user_id` INT(11) NOT NULL COMMENT '作者',
+  `content` VARCHAR(256) NOT NULL COMMENT '内容',
+  `reply_content` VARCHAR(256)  NULL COMMENT '回复内容',
+  `state` INT(2) DEFAULT NULL COMMENT '0-为解决 1 已解决',
+  `create_time` TIMESTAMP  DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_user_message` (`user_id`),
+  CONSTRAINT `fk_user_message` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `notice`*/
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('钱征昊','18401210137','1',1,'893992827@qq.com','135065');
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('张三','18401210136','3',3,'89@qq.com','1365');
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('李四','18401210136','3',3,'89@qq.com','1365');
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('王五','18401210136','3',3,'89@qq.com','1365');
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('红领巾二小入学是否需要房产证?',2,'我是万科汉口传奇悦庭的业主，由于交房不久，房产证尚未办理，但户口已迁入小区。请问对口的红领巾第二小学是否需要办理房产证才能入学，购房合同是否可以作为入学凭证？'
+,NULL,0);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('红领巾二小入学是否需要房产证?',2,'我是万科汉口传奇悦庭的业主，由于交房不久，房产证尚未办理，但户口已迁入小区。请问对口的红领巾第二小学是否需要办理房产证才能入学，购房合同是否可以作为入学凭证？'
+,NULL,0);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('产品存在隐患，该不该消费者自己买单?',2,'5月17日在武汉国际广场一楼TB专柜购买了一双两千余元的鞋子拆开后发现鞋尖处有划痕及一小块破损，联系销售后承诺会再调一双鞋。收到的鞋在穿着不到半个小时的时间里，右鞋脚背处出现了皮裂,个人觉得新买的鞋子穿了半小时不到就出现问题，却只能返厂维修不能接受，希望能跟厂家质检联系，由厂家给出意见。'
+,NULL,0);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('友谊路民主一街这里的宵夜、垃圾桶、环卫车问题。',2,'我是万科汉口传奇悦庭的业主友谊路民主一街这里的宵夜、垃圾桶、环卫车问题。户口已迁入小区。友谊路民主一街这里的宵夜、垃圾桶、环卫车友谊路民主一街这、垃圾桶、环卫车问题。？'
+,'您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区民意街城管执法队员已对该处的占道及噪音进行了处理，并要求商户规范经营。关于环卫车，垃圾桶问题，现已与环卫所联系，环卫所工作人员表示已将垃圾桶整理好，后期会多注意此处的环境卫生情况。我区工作人员将办理情况告知您，感谢您对我区的工作感到满意。',1);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('范湖的江宸天街项目夜间施工扰民',3,'范湖马场角小路上，靠近青年路这边的江宸天街项目（葛洲坝国际广场对面），夜间施工扰民，超过了10点，机械声音非常大！！无法好好休息！盼城管能处罚，避免以后再次扰民。','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('唐蔡路，唐蔡天下小区门口乱停车',4,'我们小区进出一条路，出口的两边经常有大货车违停，严重影响汽车进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+
+
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('房屋漏雨没有能力解决？不知道怎么办 ',4,'我月份在梵希美容美发航天花园店（现更名为荷木）做面部护理导致损伤，后食品药品监督六属介入，本人要求将店内所使用产品进行质检，张兵先生接管此事，3月初告知检测合格，4月初。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('严重噪音扰民-友谊路电信局附近深夜路面作业',4,'我大队民意中队常年驾驶4辆无牌电动车上路执法,笔者于5月18日下午拨打交管局举报电话85414444进行举报。5月车进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('擅自将架空层改建为堆放建筑垃圾的场所',4,'我们小区街香缇美景小区23栋后面，种了很多杨树，现在飘了很多杨花，所有的窗户都不能开，每天呼吸都极度困难，物业说准备换树种，但是需要园林审批，请政府做主，换成其他的绿色树，进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('物业改建建筑垃圾的场所',4,'我们小区进出一条路，出口的两边经常有大货车违停，严重影响汽车进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+
+/*
+SQLyog Professional v12.5.1 (64 bit)
+MySQL - 5.5.61 : Database - db_messageboard
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_messageboard` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+
+
+USE `db_messageboard`;
+
+DROP TABLE IF EXISTS `db_messageboard`;
+
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增标识',
+  `name` VARCHAR(32) NOT NULL COMMENT '姓名',
+  `usernumber` VARCHAR(32) NOT NULL COMMENT '学工号',
+  `password` VARCHAR(32) NOT NULL COMMENT '密码',
+  `type` INT(11) NOT NULL DEFAULT '3' COMMENT '类型：\r\n1-超管\r\n2-教师\r\n3-学生',
+  `email` VARCHAR(32) DEFAULT NULL COMMENT '邮箱',
+  `tel` VARCHAR(16) DEFAULT NULL COMMENT '电话',
+  `create_time` TIMESTAMP  NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增标识',
+  `topic` VARCHAR(32) NOT NULL COMMENT '主题',
+  `user_id` INT(11) NOT NULL COMMENT '作者',
+  `content` VARCHAR(256) NOT NULL COMMENT '内容',
+  `reply_content` VARCHAR(256)  NULL COMMENT '回复内容',
+  `state` INT(2) DEFAULT NULL COMMENT '0-为解决 1 已解决',
+  `create_time` TIMESTAMP  DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_user_message` (`user_id`),
+  CONSTRAINT `fk_user_message` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `notice`*/
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('钱征昊','18401210137','1',1,'893992827@qq.com','135065');
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('张三','18401210136','3',3,'89@qq.com','1365');
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('李四','18401210136','3',3,'89@qq.com','1365');
+INSERT  INTO `user`(`name`,`usernumber`,`password`,`type`,`email`,`tel`) VALUES 
+('王五','18401210136','3',3,'89@qq.com','1365');
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('红领巾二小入学是否需要房产证?',2,'我是万科汉口传奇悦庭的业主，由于交房不久，房产证尚未办理，但户口已迁入小区。请问对口的红领巾第二小学是否需要办理房产证才能入学，购房合同是否可以作为入学凭证？'
+,NULL,0);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('红领巾二小入学是否需要房产证?',2,'我是万科汉口传奇悦庭的业主，由于交房不久，房产证尚未办理，但户口已迁入小区。请问对口的红领巾第二小学是否需要办理房产证才能入学，购房合同是否可以作为入学凭证？'
+,NULL,0);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('产品存在隐患，该不该消费者自己买单?',2,'5月17日在武汉国际广场一楼TB专柜购买了一双两千余元的鞋子拆开后发现鞋尖处有划痕及一小块破损，联系销售后承诺会再调一双鞋。收到的鞋在穿着不到半个小时的时间里，右鞋脚背处出现了皮裂,个人觉得新买的鞋子穿了半小时不到就出现问题，却只能返厂维修不能接受，希望能跟厂家质检联系，由厂家给出意见。'
+,NULL,0);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('友谊路民主一街这里的宵夜、垃圾桶、环卫车问题。',2,'我是万科汉口传奇悦庭的业主友谊路民主一街这里的宵夜、垃圾桶、环卫车问题。户口已迁入小区。友谊路民主一街这里的宵夜、垃圾桶、环卫车友谊路民主一街这、垃圾桶、环卫车问题。？'
+,'您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区民意街城管执法队员已对该处的占道及噪音进行了处理，并要求商户规范经营。关于环卫车，垃圾桶问题，现已与环卫所联系，环卫所工作人员表示已将垃圾桶整理好，后期会多注意此处的环境卫生情况。我区工作人员将办理情况告知您，感谢您对我区的工作感到满意。',1);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('范湖的江宸天街项目夜间施工扰民',3,'范湖马场角小路上，靠近青年路这边的江宸天街项目（葛洲坝国际广场对面），夜间施工扰民，超过了10点，机械声音非常大！！无法好好休息！盼城管能处罚，避免以后再次扰民。','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('唐蔡路，唐蔡天下小区门口乱停车',4,'我们小区进出一条路，出口的两边经常有大货车违停，严重影响汽车进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+
+
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('房屋漏雨没有能力解决？不知道怎么办 ',4,'我月份在梵希美容美发航天花园店（现更名为荷木）做面部护理导致损伤，后食品药品监督六属介入，本人要求将店内所使用产品进行质检，张兵先生接管此事，3月初告知检测合格，4月初。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('严重噪音扰民-友谊路电信局附近深夜路面作业',4,'我大队民意中队常年驾驶4辆无牌电动车上路执法,笔者于5月18日下午拨打交管局举报电话85414444进行举报。5月车进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('擅自将架空层改建为堆放建筑垃圾的场所',4,'我们小区街香缇美景小区23栋后面，种了很多杨树，现在飘了很多杨花，所有的窗户都不能开，每天呼吸都极度困难，物业说准备换树种，但是需要园林审批，请政府做主，换成其他的绿色树，进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+
+INSERT  INTO `message`(`topic`,`user_id`,`content`,`reply_content`,`state`) VALUES 
+('物业改建建筑垃圾的场所',4,'我们小区进出一条路，出口的两边经常有大货车违停，严重影响汽车进出安全。
+
+','您好，感谢您的留言，现对您投诉的问题回复如下：
+      网友您好！我区在接到您的留言后高度重视。我区城管局执法队员已对该工地负责人进行了批评教育，要求其不能在夜间施工作业和噪音扰民，该工地负责人表示将缩短作业时间，尽量做到不扰民。谢谢您的留言。',1);
+
